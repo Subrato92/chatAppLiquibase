@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+                    xmlns:pro="http://www.liquibase.org/xml/ns/pro"  
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	<include file="scripts/Initial_Setup.sql"/>
+	<changeSet id="2" author="TechSolvi">  
+        <createTable schemaName="chatapp" tableName="MSG_STORE">  
+            <column name="id" type="BIGINT">  
+                <constraints nullable="false"/>  
+            </column> 
+			<column name="sender"  type="BIGINT">
+                <constraints  nullable="false"/>
+            </column>
+            <column name="msgText"  type="varchar(1000)">  
+                <constraints  nullable="false"/>  
+            </column>
+			<column name="recipient"  type="BIGINT">
+                <constraints  nullable="false"/>
+            </column>
+        </createTable>  
+		<addAutoIncrement catalogName="msgStore"  
+			columnDataType="int"
+			columnName="id" 
+			defaultOnNull="false"
+			generationType="ALWAYS"
+			incrementBy="1"  
+			schemaName="chatapp" 
+			startWith="1"  
+			tableName="MSG_STORE"/>  
+		<addPrimaryKey   
+            columnNames="id"  
+            constraintName="pk_msg_store"  
+            schemaName="chatapp"  
+            tableName="MSG_STORE"/>  
+    </changeSet>
+	<include file="scripts/Initial_Setup.sql"/>
+ </databaseChangeLog>
